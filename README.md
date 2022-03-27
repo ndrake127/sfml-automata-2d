@@ -1,4 +1,4 @@
-# sfml-automata-2d
+# SFML Automata 2D
 
 ![Alt Text](https://github.com/ndrake127/sfml-automata-2d/blob/master/resources/demo.gif)
 
