@@ -17,7 +17,7 @@ int betterModulo(int i, T(&)[N])
 
 class Board {
 public:
-    Board(unsigned windowWidth, unsigned windowHeight, unsigned scale, unsigned drawLimit, unsigned updateLimit, unsigned threadCount, unsigned seed) {
+    Board(unsigned windowWidth, unsigned windowHeight, unsigned scale, unsigned drawLimit, unsigned updateLimit, unsigned threadCount, unsigned seed, bool outputPNG) {
         mSeed = (seed != 0) ? seed : time(NULL);
         srand(mSeed);
 
@@ -30,6 +30,7 @@ public:
         mUpdateFPSLimit = updateLimit;
         mUpdateThreadCount = threadCount;
         mThreadHeights.resize(mUpdateThreadCount + 1, 0);
+        mOutputPNG = outputPNG;
         
         if(mInverseBoardScale) {
             mBoardWidth = mWindowWidth / mInverseBoardScale;
@@ -122,7 +123,7 @@ public:
             mMaxFPS += 1.0f / clock.getElapsedTime().asSeconds();
             mFrames++;
 
-            mBoard[mCurrentBoard].saveToFile(std::string("png/" + std::to_string(mFrames) + ".png"));
+            if(mOutputPNG) mBoard[mCurrentBoard].saveToFile(std::string("png/" + std::to_string(mFrames) + ".png"));
 
             while(mUpdateFPSLimit && 1.0f / clock.getElapsedTime().asSeconds() >= mUpdateFPSLimit);
 
@@ -232,6 +233,7 @@ private:
     const int               mSearchRadius = 1;
     sf::Texture             mBoardTexture;
     sf::Sprite              mBoardSprite;
+    bool                    mOutputPNG;
 
     sf::Color               mColorLiving = sf::Color(0, 200, 0);
     sf::Color               mColorDead = sf::Color(50, 0, 0);

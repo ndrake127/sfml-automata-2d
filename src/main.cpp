@@ -14,6 +14,7 @@ int main(int argc, char **argv) {
     TCLAP::ValueArg<unsigned> updateArg("", "update-limit", "This limits the update rate of the program. 0 uncaps the update rate. Defaults to 0", false, 0, "number", cmd);
     TCLAP::ValueArg<unsigned> threadArg("", "threads", "This sets the number of threads used to calculate next step. Defaults to 1", false, 1, "number", cmd);
     TCLAP::ValueArg<unsigned> seedArg("", "seed", "This sets the seed for random board generation. Uses system time if 0. Defaults to 0", false, 0, "number", cmd);
+    TCLAP::ValueArg<bool> pngArg("", "png", "1 outputs each frame to a png in a subdirectory. Defaults to 0", false, 0, "1 or 0", cmd);
 
 	cmd.parse( argc, argv );
 
@@ -23,8 +24,9 @@ int main(int argc, char **argv) {
     std::cout << "Draw limit: " << drawArg.getValue() << '\n';
     std::cout << "Update limit: " << updateArg.getValue() << '\n';
     std::cout << "Update threads: " << threadArg.getValue() << '\n';
+    std::cout << "Output PNG: " << pngArg.getValue() << '\n';
 
-    Board game(widthArg.getValue(), heightArg.getValue(), scaleArg.getValue(), drawArg.getValue(), updateArg.getValue(), threadArg.getValue(), seedArg.getValue());
+    Board game(widthArg.getValue(), heightArg.getValue(), scaleArg.getValue(), drawArg.getValue(), updateArg.getValue(), threadArg.getValue(), seedArg.getValue(), pngArg.getValue());
 
 	} catch (TCLAP::ArgException &e) { 
         std::cerr << "error: " << e.error() << " for arg " << e.argId() << std::endl;

@@ -15,7 +15,8 @@ LDLIBS   := -lm -lsfml-graphics -lsfml-window -lsfml-system -pthread
 .PHONY: all clean
 
 all: $(EXE)
-
+	if [ ! -d "png" ]; then mkdir png; fi
+	
 $(EXE): $(OBJ) | $(BIN_DIR)
 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
