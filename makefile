@@ -30,6 +30,6 @@ run: all
 	./bin/prog
 
 clean:
-	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR)
+	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR) png
 
 -include $(OBJ:.o=.d)
