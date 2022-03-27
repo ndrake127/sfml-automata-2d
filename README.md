@@ -1,6 +1,6 @@
 # SFML Automata 2D
 
-![Alt Text](https://github.com/ndrake127/sfml-automata-2d/blob/master/resources/demo.gif)
+<img src="https://github.com/ndrake127/sfml-automata-2d/blob/master/resources/demo.gif" width="50%">
 
 A 2D cellular automaton simulator displayed using SFML with parallelism. Currently using Conway's Game of Life rules.
 
