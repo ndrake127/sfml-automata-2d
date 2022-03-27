@@ -9,12 +9,6 @@
 #include <time.h>
 #include <algorithm>
 
-template <typename T, int N>
-int betterModulo(int i, T(&)[N])
-{
-  return (i % N + N) % N;
-}
-
 class Board {
 public:
     Board(unsigned windowWidth, unsigned windowHeight, unsigned scale, unsigned drawLimit, unsigned updateLimit, unsigned threadCount, unsigned seed, bool outputPNG) {
