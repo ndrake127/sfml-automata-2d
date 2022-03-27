@@ -1,0 +1,1 @@
+ffmpeg -framerate 30 -i 'png/%d.png' -r 30 -vf scale=250:-1:flags=neighbor out.gif
