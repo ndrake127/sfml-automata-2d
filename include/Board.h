@@ -144,26 +144,26 @@ public:
         //     }
         // }
 
-        for(unsigned i = mBoardWidth / 2; i <  mBoardWidth / 2 + 5; i++) {
-            for(unsigned j = mBoardHeight / 2; j <  mBoardHeight / 2 + 5; j++) {
-                if(distribution(generator) == 0) {
-                    mBoard[mCurrentBoard].setPixel(i, j, mColorLiving);
-                }
-            }
-        }
-
-        // unsigned j = mBoardHeight / 2;
-        // std::string line;
-
-        // while(getline(std::cin, line)) {
-        //     for(unsigned i = mBoardWidth / 2; i <  mBoardWidth / 2 + line.length(); i++) {
-        //         if(line[i - mBoardWidth / 2] == '1') {
+        // for(unsigned i = mBoardWidth / 2; i <  mBoardWidth / 2 + 5; i++) {
+        //     for(unsigned j = mBoardHeight / 2; j <  mBoardHeight / 2 + 5; j++) {
+        //         if(distribution(generator) == 0) {
         //             mBoard[mCurrentBoard].setPixel(i, j, mColorLiving);
         //         }
         //     }
-
-        //     j++;
         // }
+
+        unsigned j = mBoardHeight / 3;
+        std::string line;
+
+        while(getline(std::cin, line)) {
+            for(unsigned i = mBoardWidth / 3; i <  mBoardWidth / 3 + line.length(); i++) {
+                if(line[i - mBoardWidth / 3] == '1') {
+                    mBoard[mCurrentBoard].setPixel(i, j, mColorLiving);
+                }
+            }
+
+            j++;
+        }
     }
 
     bool update(unsigned x, unsigned width, unsigned y, unsigned height) {                                      // Parallelizable step function, applies rules defined in getNext
@@ -229,8 +229,8 @@ private:
     sf::Sprite              mBoardSprite;
     bool                    mOutputPNG;
 
-    sf::Color               mColorLiving = sf::Color(0, 200, 0);
-    sf::Color               mColorDead = sf::Color(50, 0, 0);
+    sf::Color               mColorLiving = sf::Color(255, 255, 255);
+    sf::Color               mColorDead = sf::Color(0, 0, 0);
     int                     mInverseSpawnFrequency = 2;
 
     unsigned                mUpdateThreadCount = 64;
